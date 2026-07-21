@@ -16,6 +16,7 @@
         box-sizing: border-box;
     }
 
+
     /* =========================
        VIDEO BACKGROUND
     ========================= */
@@ -33,7 +34,10 @@
         z-index: -2;
     }
 
-    /* OVERLAY GELAP */
+
+    /* =========================
+       OVERLAY GELAP
+    ========================= */
 
     .video-overlay {
         position: fixed;
@@ -53,6 +57,7 @@
 
         z-index: -1;
     }
+
 
     /* =========================
        BODY
@@ -78,6 +83,7 @@
         overflow-x: hidden;
     }
 
+
     /* =========================
        CONTAINER
     ========================= */
@@ -99,28 +105,37 @@
             ease;
     }
 
+
+    /* ANIMASI MUNCUL */
+
     @keyframes muncul {
 
         from {
             opacity: 0;
+
             transform:
                 translateY(25px);
         }
 
         to {
             opacity: 1;
+
             transform:
                 translateY(0);
         }
 
     }
 
+
     /* =========================
        PROFILE FOTO
+       TIDAK BERPUTAR
+       EFEK GLOW MENYALA
     ========================= */
 
     .profile {
         width: 115px;
+
         height: 115px;
 
         margin: 0 auto 20px;
@@ -132,58 +147,41 @@
         padding: 4px;
 
         background:
-            conic-gradient(
+            linear-gradient(
+                135deg,
                 #ffffff,
-                #555555,
-                #ffffff,
-                #111111,
+                #777777,
                 #ffffff
             );
 
-        animation:
-            rotateGlow
-            4s
-            linear
-            infinite;
+        /* EFEK CAHAYA */
 
         box-shadow:
 
-            0 0 15px
-            rgba(255,255,255,0.7),
+            0 0 10px
+            rgba(255,255,255,0.5),
 
-            0 0 35px
+            0 0 25px
             rgba(255,255,255,0.35),
 
-            0 0 70px
-            rgba(255,255,255,0.18);
-    }
+            0 0 50px
+            rgba(255,255,255,0.2);
 
-    /* EFEK CAHAYA LUAR PP */
-
-    .profile::before {
-        content: "";
-
-        position: absolute;
-
-        inset: -8px;
-
-        border-radius: 50%;
-
-        border:
-            1px solid
-            rgba(255,255,255,0.25);
+        /* ANIMASI GLOW SAJA */
 
         animation:
-            pulseGlow
+            glowPP
             2s
             ease-in-out
             infinite;
     }
 
-    /* FOTO */
+
+    /* FOTO DI DALAM PP */
 
     .profile img {
         width: 100%;
+
         height: 100%;
 
         display: block;
@@ -197,35 +195,87 @@
             rgba(5,5,5,0.95);
     }
 
-    /* ANIMASI PUTAR PP */
 
-    @keyframes rotateGlow {
+    /* LINGKARAN CAHAYA LUAR */
 
-        from {
-            transform:
-                rotate(0deg);
+    .profile::before {
+
+        content: "";
+
+        position: absolute;
+
+        inset: -7px;
+
+        border-radius: 50%;
+
+        border:
+            2px solid
+            rgba(255,255,255,0.35);
+
+        animation:
+            pulseGlow
+            2s
+            ease-in-out
+            infinite;
+
+        z-index: -1;
+    }
+
+
+    /* PP MENYALA */
+
+    @keyframes glowPP {
+
+        0%, 100% {
+
+            box-shadow:
+
+                0 0 10px
+                rgba(255,255,255,0.4),
+
+                0 0 25px
+                rgba(255,255,255,0.25),
+
+                0 0 45px
+                rgba(255,255,255,0.15);
         }
 
-        to {
-            transform:
-                rotate(360deg);
+
+        50% {
+
+            box-shadow:
+
+                0 0 20px
+                rgba(255,255,255,0.8),
+
+                0 0 45px
+                rgba(255,255,255,0.5),
+
+                0 0 80px
+                rgba(255,255,255,0.3);
         }
 
     }
 
-    /* ANIMASI GLOW PP */
+
+    /* CAHAYA BERDENYUT */
 
     @keyframes pulseGlow {
 
         0%, 100% {
-            opacity: 0.3;
+
+            opacity:
+                0.3;
 
             transform:
-                scale(0.95);
+                scale(0.98);
         }
 
+
         50% {
-            opacity: 1;
+
+            opacity:
+                1;
 
             transform:
                 scale(1.05);
@@ -233,50 +283,70 @@
 
     }
 
+
     /* =========================
        JUDUL
     ========================= */
 
     h1 {
-        font-size: 28px;
 
-        margin-bottom: 10px;
+        font-size:
+            28px;
+
+        margin-bottom:
+            10px;
 
         text-shadow:
+
             0 2px 10px
             rgba(0,0,0,0.8);
     }
+
 
     .description {
-        color: #ccc;
 
-        font-size: 15px;
+        color:
+            #ccc;
 
-        margin-bottom: 30px;
+        font-size:
+            15px;
+
+        margin-bottom:
+            30px;
 
         text-shadow:
+
             0 2px 10px
             rgba(0,0,0,0.8);
     }
+
 
     /* =========================
        MUSIC PLAYER
     ========================= */
 
     .music-player {
-        width: 100%;
 
-        padding: 14px 16px;
+        width:
+            100%;
 
-        display: flex;
+        padding:
+            14px 16px;
 
-        align-items: center;
+        display:
+            flex;
 
-        gap: 14px;
+        align-items:
+            center;
 
-        position: relative;
+        gap:
+            14px;
 
-        overflow: hidden;
+        position:
+            relative;
+
+        overflow:
+            hidden;
 
         background:
             rgba(0,0,0,0.55);
@@ -285,7 +355,8 @@
             1px solid
             rgba(255,255,255,0.2);
 
-        border-radius: 18px;
+        border-radius:
+            18px;
 
         backdrop-filter:
             blur(15px);
@@ -294,19 +365,22 @@
             blur(15px);
 
         box-shadow:
+
             0 0 10px
             rgba(255,255,255,0.08),
 
             0 8px 30px
             rgba(0,0,0,0.5);
 
-        margin-bottom: 20px;
+        margin-bottom:
+            20px;
 
         transition:
             0.4s;
     }
 
-    /* MUSIK AKTIF */
+
+    /* MUSIC AKTIF */
 
     .music-player.playing {
 
@@ -322,91 +396,139 @@
             rgba(255,255,255,0.2);
     }
 
+
+    /* ICON MUSIK */
+
     .music-icon {
-        width: 48px;
 
-        height: 48px;
+        width:
+            48px;
 
-        display: flex;
+        height:
+            48px;
 
-        align-items: center;
+        display:
+            flex;
 
-        justify-content: center;
+        align-items:
+            center;
 
-        border-radius: 50%;
+        justify-content:
+            center;
+
+        border-radius:
+            50%;
 
         background:
+
             linear-gradient(
                 135deg,
                 #333,
                 #111
             );
 
-        font-size: 22px;
+        font-size:
+            22px;
 
-        flex-shrink: 0;
+        flex-shrink:
+            0;
 
         box-shadow:
+
             0 0 15px
             rgba(255,255,255,0.15);
     }
 
-    .music-info {
-        flex: 1;
 
-        text-align: left;
+    /* INFO MUSIK */
+
+    .music-info {
+
+        flex:
+            1;
+
+        text-align:
+            left;
     }
+
 
     .music-info strong {
-        display: block;
 
-        font-size: 14px;
+        display:
+            block;
 
-        color: white;
+        font-size:
+            14px;
+
+        color:
+            white;
     }
+
 
     .music-info span {
-        display: block;
 
-        margin-top: 4px;
+        display:
+            block;
 
-        font-size: 11px;
+        margin-top:
+            4px;
 
-        color: #aaa;
+        font-size:
+            11px;
+
+        color:
+            #aaa;
     }
 
-    /* TOMBOL PLAY */
+
+    /* =========================
+       TOMBOL PLAY
+    ========================= */
 
     .play-button {
-        width: 45px;
 
-        height: 45px;
+        width:
+            45px;
 
-        border: none;
+        height:
+            45px;
 
-        border-radius: 50%;
+        border:
+            none;
 
-        background: white;
+        border-radius:
+            50%;
 
-        color: black;
+        background:
+            white;
 
-        font-size: 16px;
+        color:
+            black;
 
-        cursor: pointer;
+        font-size:
+            16px;
 
-        display: flex;
+        cursor:
+            pointer;
 
-        align-items: center;
+        display:
+            flex;
 
-        justify-content: center;
+        align-items:
+            center;
+
+        justify-content:
+            center;
 
         transition:
             0.3s;
 
         box-shadow:
+
             0 0 10px
             rgba(255,255,255,0.5);
     }
+
 
     .play-button:hover {
 
@@ -422,58 +544,43 @@
             rgba(255,255,255,0.5);
     }
 
+
     .play-button:active {
 
         transform:
             scale(0.94);
     }
 
-    /* IKON BERPUTAR SAAT MUSIK AKTIF */
-
-    .music-player.playing
-    .music-icon {
-
-        animation:
-            putar
-            2s
-            linear
-            infinite;
-    }
-
-    @keyframes putar {
-
-        from {
-            transform:
-                rotate(0deg);
-        }
-
-        to {
-            transform:
-                rotate(360deg);
-        }
-
-    }
 
     /* =========================
        SOCIAL BUTTON
     ========================= */
 
     .button {
-        display: block;
 
-        width: 100%;
+        display:
+            block;
 
-        padding: 16px;
+        width:
+            100%;
 
-        margin: 15px 0;
+        padding:
+            16px;
 
-        color: white;
+        margin:
+            15px 0;
 
-        text-decoration: none;
+        color:
+            white;
 
-        position: relative;
+        text-decoration:
+            none;
 
-        overflow: hidden;
+        position:
+            relative;
+
+        overflow:
+            hidden;
 
         background:
             rgba(0,0,0,0.5);
@@ -482,7 +589,8 @@
             1px solid
             rgba(255,255,255,0.2);
 
-        border-radius: 15px;
+        border-radius:
+            15px;
 
         transition:
             all 0.3s ease;
@@ -494,27 +602,36 @@
             blur(12px);
 
         box-shadow:
+
             0 0 10px
             rgba(255,255,255,0.08);
     }
+
 
     /* CAHAYA BERGERAK */
 
     .button::before {
 
-        content: "";
+        content:
+            "";
 
-        position: absolute;
+        position:
+            absolute;
 
-        top: 0;
+        top:
+            0;
 
-        left: -120%;
+        left:
+            -120%;
 
-        width: 100%;
+        width:
+            100%;
 
-        height: 100%;
+        height:
+            100%;
 
         background:
+
             linear-gradient(
                 90deg,
                 transparent,
@@ -526,10 +643,15 @@
             0.6s;
     }
 
+
     .button:hover::before {
 
-        left: 120%;
+        left:
+            120%;
     }
+
+
+    /* BUTTON HOVER */
 
     .button:hover {
 
@@ -551,6 +673,9 @@
             rgba(255,255,255,0.2);
     }
 
+
+    /* BUTTON DITEKAN */
+
     .button:active {
 
         transform:
@@ -560,9 +685,11 @@
             rgba(255,255,255,0.2);
 
         box-shadow:
+
             0 0 20px
             rgba(255,255,255,0.7);
     }
+
 
     /* =========================
        FOOTER
@@ -570,11 +697,14 @@
 
     footer {
 
-        margin-top: 30px;
+        margin-top:
+            30px;
 
-        font-size: 12px;
+        font-size:
+            12px;
 
-        color: #aaa;
+        color:
+            #aaa;
     }
 
 </style>
@@ -585,7 +715,9 @@
 <body>
 
 ```
-<!-- VIDEO BACKGROUND -->
+<!-- =========================
+     VIDEO BACKGROUND
+========================= -->
 
 <video
     autoplay
@@ -600,13 +732,20 @@
 
 </video>
 
+
 <!-- OVERLAY -->
 
-<div class="video-overlay"></div>
+<div
+    class="video-overlay">
+</div>
 
-<!-- KONTEN -->
+
+<!-- =========================
+     KONTEN WEBSITE
+========================= -->
 
 <div class="container">
+
 
     <!-- PROFILE FOTO -->
 
@@ -618,17 +757,24 @@
 
     </div>
 
+
     <!-- JUDUL -->
 
     <h1>
         Selamat Datang 👋
     </h1>
 
+
+    <!-- DESKRIPSI -->
+
     <p class="description">
         Ini adalah website pertama saya.
     </p>
 
-    <!-- MUSIK -->
+
+    <!-- =========================
+         MUSIK
+    ========================= -->
 
     <audio
         id="musik"
@@ -643,25 +789,37 @@
 
     </audio>
 
+
     <!-- MUSIC PLAYER -->
 
-    <div class="music-player">
+    <div
+        class="music-player">
 
-        <div class="music-icon">
+
+        <div
+            class="music-icon">
+
             🎵
+
         </div>
 
-        <div class="music-info">
+
+        <div
+            class="music-info">
 
             <strong>
                 Music Player
             </strong>
 
-            <span id="musicStatus">
+            <span
+                id="musicStatus">
+
                 Tekan ▶ untuk memutar
+
             </span>
 
         </div>
+
 
         <button
             class="play-button"
@@ -673,9 +831,13 @@
 
         </button>
 
+
     </div>
 
-    <!-- WHATSAPP -->
+
+    <!-- =========================
+         WHATSAPP
+    ========================= -->
 
     <a
         class="button"
@@ -687,7 +849,10 @@
 
     </a>
 
-    <!-- TIKTOK -->
+
+    <!-- =========================
+         TIKTOK
+    ========================= -->
 
     <a
         class="button"
@@ -699,7 +864,10 @@
 
     </a>
 
-    <!-- INSTAGRAM -->
+
+    <!-- =========================
+         INSTAGRAM
+    ========================= -->
 
     <a
         class="button"
@@ -711,31 +879,50 @@
 
     </a>
 
+
     <!-- FOOTER -->
 
     <footer>
+
         © 2026 Website Saya
+
     </footer>
+
 
 </div>
 
-<!-- JAVASCRIPT MUSIK -->
+
+<!-- =========================
+     JAVASCRIPT MUSIK
+========================= -->
 
 <script>
 
     async function putarMusik() {
 
         const musik =
-            document.getElementById("musik");
+            document.getElementById(
+                "musik"
+            );
+
 
         const tombol =
-            document.getElementById("musicButton");
+            document.getElementById(
+                "musicButton"
+            );
+
 
         const status =
-            document.getElementById("musicStatus");
+            document.getElementById(
+                "musicStatus"
+            );
+
 
         const player =
-            document.querySelector(".music-player");
+            document.querySelector(
+                ".music-player"
+            );
+
 
         if (musik.paused) {
 
@@ -743,17 +930,21 @@
 
                 await musik.play();
 
+
                 tombol.innerHTML =
                     "⏸";
 
+
                 status.innerHTML =
                     "Musik sedang diputar";
+
 
                 player.classList.add(
                     "playing"
                 );
 
             }
+
 
             catch (error) {
 
@@ -762,11 +953,14 @@
                     error
                 );
 
+
                 tombol.innerHTML =
                     "▶";
 
+
                 status.innerHTML =
                     "Musik gagal dimuat";
+
 
                 player.classList.remove(
                     "playing"
@@ -776,15 +970,19 @@
 
         }
 
+
         else {
 
             musik.pause();
 
+
             tombol.innerHTML =
                 "▶";
 
+
             status.innerHTML =
                 "Musik sedang berhenti";
+
 
             player.classList.remove(
                 "playing"
@@ -794,7 +992,10 @@
 
     }
 
-    /* CEK FILE MUSIK */
+
+    /* =========================
+       CEK FILE MUSIK
+    ========================= */
 
     document
         .getElementById("musik")
