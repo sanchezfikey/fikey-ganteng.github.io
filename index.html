@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Website Pertama Gua Sanchez Fikey</title>
+    <title>Website Saya</title>
 
     <style>
         * {
@@ -75,6 +76,113 @@
             margin-bottom: 30px;
         }
 
+        /* MUSIC PLAYER */
+
+        .music-player {
+            width: 100%;
+            padding: 14px 16px;
+
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            border-radius: 18px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.3);
+
+            margin-bottom: 20px;
+        }
+
+        .music-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #333,
+                #111
+            );
+
+            font-size: 22px;
+
+            flex-shrink: 0;
+        }
+
+        .music-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .music-info strong {
+            display: block;
+            font-size: 14px;
+            color: white;
+        }
+
+        .music-info span {
+            display: block;
+            margin-top: 4px;
+
+            font-size: 11px;
+            color: #888;
+        }
+
+        .play-button {
+            width: 45px;
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: black;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .music-player.playing .music-icon {
+            animation: putar 2s linear infinite;
+        }
+
+        @keyframes putar {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* SOCIAL BUTTON */
+
         .button {
             display: block;
             width: 100%;
@@ -129,23 +237,85 @@
             Ini adalah website pertama saya.
         </p>
 
-        <a class="button"
-           href="https://wa.me/6283899902729"
-           target="_blank">
+
+        <!-- MUSIK -->
+
+        <audio id="musik" loop preload="metadata">
+
+            <source
+                src="AUD-20260617-WA0043.mp3"
+                type="audio/mpeg">
+
+            Browser kamu tidak mendukung pemutar audio.
+
+        </audio>
+
+
+        <div class="music-player">
+
+            <div class="music-icon" id="musicIcon">
+                🎵
+            </div>
+
+            <div class="music-info">
+
+                <strong>
+                    Music Player
+                </strong>
+
+                <span id="musicStatus">
+                    Musik sedang berhenti
+                </span>
+
+            </div>
+
+            <button
+                class="play-button"
+                onclick="putarMusik()"
+                id="musicButton">
+
+                ▶
+
+            </button>
+
+        </div>
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            class="button"
+            href="https://wa.me/6283899902729"
+            target="_blank">
+
             💬 WhatsApp
+
         </a>
 
-        <a class="button"
-           href="https://www.tiktok.com/@anyaacimoy"
-           target="_blank">
+
+        <!-- TIKTOK -->
+
+        <a
+            class="button"
+            href="https://www.tiktok.com/@anyaacimoy"
+            target="_blank">
+
             🎵 TikTok
+
         </a>
 
-        <a class="button"
-           href="https://www.instagram.com/sanchezfemz?igsh=MTJzOGhjZ3VuaWU0Yg=="
-           target="_blank">
+
+        <!-- INSTAGRAM -->
+
+        <a
+            class="button"
+            href="https://www.instagram.com/sanchezfemz?igsh=MTJzOGhjZ3VuaWU0Yg=="
+            target="_blank">
+
             📸 Instagram
+
         </a>
+
 
         <footer>
             © 2026 Website Saya
@@ -153,5 +323,52 @@
 
     </div>
 
+
+    <script>
+
+        function putarMusik() {
+
+            const musik =
+                document.getElementById("musik");
+
+            const tombol =
+                document.getElementById("musicButton");
+
+            const status =
+                document.getElementById("musicStatus");
+
+            const player =
+                document.querySelector(".music-player");
+
+
+            if (musik.paused) {
+
+                musik.play();
+
+                tombol.innerHTML = "⏸";
+
+                status.innerHTML =
+                    "Musik sedang diputar";
+
+                player.classList.add("playing");
+
+            } else {
+
+                musik.pause();
+
+                tombol.innerHTML = "▶";
+
+                status.innerHTML =
+                    "Musik sedang berhenti";
+
+                player.classList.remove("playing");
+
+            }
+
+        }
+
+    </script>
+
 </body>
 </html>
+```
