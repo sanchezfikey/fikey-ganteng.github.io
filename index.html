@@ -167,6 +167,10 @@
             transform: scale(1.1);
         }
 
+        .play-button:active {
+            transform: scale(0.95);
+        }
+
         .music-player.playing .music-icon {
             animation: putar 2s linear infinite;
         }
@@ -241,19 +245,19 @@
         <!-- MUSIK -->
 
         <audio id="musik" loop preload="metadata">
-
             <source
                 src="AUD-20260617-WA0043.mp3"
                 type="audio/mpeg">
 
             Browser kamu tidak mendukung pemutar audio.
-
         </audio>
 
 
+        <!-- MUSIC PLAYER -->
+
         <div class="music-player">
 
-            <div class="music-icon" id="musicIcon">
+            <div class="music-icon">
                 🎵
             </div>
 
@@ -264,7 +268,7 @@
                 </strong>
 
                 <span id="musicStatus">
-                    Musik sedang berhenti
+                    Tekan ▶ untuk memutar
                 </span>
 
             </div>
@@ -272,7 +276,8 @@
             <button
                 class="play-button"
                 onclick="putarMusik()"
-                id="musicButton">
+                id="musicButton"
+                type="button">
 
                 ▶
 
@@ -286,7 +291,8 @@
         <a
             class="button"
             href="https://wa.me/6283899902729"
-            target="_blank">
+            target="_blank"
+            rel="noopener noreferrer">
 
             💬 WhatsApp
 
@@ -298,7 +304,8 @@
         <a
             class="button"
             href="https://www.tiktok.com/@anyaacimoy"
-            target="_blank">
+            target="_blank"
+            rel="noopener noreferrer">
 
             🎵 TikTok
 
@@ -310,7 +317,8 @@
         <a
             class="button"
             href="https://www.instagram.com/sanchezfemz?igsh=MTJzOGhjZ3VuaWU0Yg=="
-            target="_blank">
+            target="_blank"
+            rel="noopener noreferrer">
 
             📸 Instagram
 
@@ -326,7 +334,7 @@
 
     <script>
 
-        function putarMusik() {
+        async function putarMusik() {
 
             const musik =
                 document.getElementById("musik");
@@ -343,14 +351,34 @@
 
             if (musik.paused) {
 
-                musik.play();
+                try {
 
-                tombol.innerHTML = "⏸";
+                    await musik.play();
 
-                status.innerHTML =
-                    "Musik sedang diputar";
+                    tombol.innerHTML = "⏸";
 
-                player.classList.add("playing");
+                    status.innerHTML =
+                        "Musik sedang diputar";
+
+                    player.classList.add("playing");
+
+                } catch (error) {
+
+                    console.error(
+                        "Musik gagal diputar:",
+                        error
+                    );
+
+                    tombol.innerHTML = "▶";
+
+                    status.innerHTML =
+                        "Musik gagal dimuat";
+
+                    player.classList.remove(
+                        "playing"
+                    );
+
+                }
 
             } else {
 
@@ -361,14 +389,34 @@
                 status.innerHTML =
                     "Musik sedang berhenti";
 
-                player.classList.remove("playing");
+                player.classList.remove(
+                    "playing"
+                );
 
             }
 
         }
 
+
+        /* Jika file musik error */
+
+        document
+            .getElementById("musik")
+            .addEventListener(
+                "error",
+                function() {
+
+                    document
+                        .getElementById(
+                            "musicStatus"
+                        )
+                        .innerHTML =
+                        "File musik tidak ditemukan";
+
+                }
+            );
+
     </script>
 
 </body>
 </html>
-
