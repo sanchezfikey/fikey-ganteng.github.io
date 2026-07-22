@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+```
 <title>Sanchez Fikey</title>
 
 <style>
@@ -15,7 +15,6 @@
         padding: 0;
         box-sizing: border-box;
     }
-
 
     /* =========================
        VIDEO BACKGROUND
@@ -33,7 +32,6 @@
 
         z-index: -2;
     }
-
 
     /* =========================
        OVERLAY GELAP
@@ -58,7 +56,6 @@
         z-index: -1;
     }
 
-
     /* =========================
        BODY
     ========================= */
@@ -76,13 +73,12 @@
 
         align-items: center;
 
-        padding: 30px 20px;
+        padding: 40px 20px;
 
         position: relative;
 
         overflow-x: hidden;
     }
-
 
     /* =========================
        CONTAINER
@@ -105,11 +101,6 @@
             ease;
     }
 
-
-    /* =========================
-       ANIMASI MUNCUL
-    ========================= */
-
     @keyframes muncul {
 
         from {
@@ -128,11 +119,9 @@
 
     }
 
-
     /* =========================
        PROFILE FOTO
        EFEK GLOW
-       TIDAK BERPUTAR
     ========================= */
 
     .profile {
@@ -174,9 +163,6 @@
             infinite;
     }
 
-
-    /* FOTO PROFIL */
-
     .profile img {
         width: 100%;
 
@@ -192,9 +178,6 @@
             3px solid
             rgba(5,5,5,0.95);
     }
-
-
-    /* CAHAYA LUAR PP */
 
     .profile::before {
 
@@ -219,9 +202,6 @@
         z-index: -1;
     }
 
-
-    /* ANIMASI PP MENYALA */
-
     @keyframes glowPP {
 
         0%, 100% {
@@ -237,7 +217,6 @@
                 0 0 45px
                 rgba(255,255,255,0.15);
         }
-
 
         50% {
 
@@ -255,25 +234,19 @@
 
     }
 
-
-    /* CAHAYA BERDENYUT */
-
     @keyframes pulseGlow {
 
         0%, 100% {
 
-            opacity:
-                0.3;
+            opacity: 0.3;
 
             transform:
                 scale(0.98);
         }
 
-
         50% {
 
-            opacity:
-                1;
+            opacity: 1;
 
             transform:
                 scale(1.05);
@@ -281,21 +254,17 @@
 
     }
 
-
     /* =========================
        TYPING EFFECT
     ========================= */
 
     h1 {
 
-        font-size:
-            28px;
+        font-size: 28px;
 
-        min-height:
-            40px;
+        min-height: 40px;
 
-        margin-bottom:
-            10px;
+        margin-bottom: 12px;
 
         text-shadow:
 
@@ -303,16 +272,11 @@
             rgba(0,0,0,0.8);
     }
 
-
-    /* KURSOR KETIK */
-
     #typing-text::after {
 
-        content:
-            "|";
+        content: "|";
 
-        margin-left:
-            3px;
+        margin-left: 3px;
 
         animation:
             kedip
@@ -320,32 +284,150 @@
             infinite;
     }
 
-
     @keyframes kedip {
 
         0%, 50% {
-            opacity:
-                1;
+            opacity: 1;
         }
 
         51%, 100% {
-            opacity:
-                0;
+            opacity: 0;
         }
 
     }
 
+    /* =========================
+       JAM DIGITAL
+    ========================= */
+
+    .clock-box {
+
+        width: 100%;
+
+        margin: 5px auto 22px;
+
+        padding: 14px 20px;
+
+        background:
+            rgba(0,0,0,0.45);
+
+        border:
+            1px solid
+            rgba(255,255,255,0.18);
+
+        border-radius: 18px;
+
+        backdrop-filter:
+            blur(15px);
+
+        -webkit-backdrop-filter:
+            blur(15px);
+
+        box-shadow:
+
+            0 0 10px
+            rgba(255,255,255,0.08),
+
+            0 8px 30px
+            rgba(0,0,0,0.4);
+
+        animation:
+            clockGlow
+            2s
+            ease-in-out
+            infinite;
+    }
+
+    /* JAM */
+
+    #digital-clock {
+
+        font-size: 32px;
+
+        font-weight: bold;
+
+        letter-spacing: 3px;
+
+        color: white;
+
+        text-shadow:
+
+            0 0 5px
+            rgba(255,255,255,0.8),
+
+            0 0 15px
+            rgba(255,255,255,0.5),
+
+            0 0 30px
+            rgba(255,255,255,0.25);
+    }
+
+    /* HARI */
+
+    #day-name {
+
+        margin-top: 6px;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        color: #ffffff;
+
+        text-shadow:
+
+            0 0 10px
+            rgba(255,255,255,0.5);
+    }
+
+    /* TANGGAL */
+
+    #date-name {
+
+        margin-top: 4px;
+
+        font-size: 12px;
+
+        color: #aaa;
+    }
+
+    @keyframes clockGlow {
+
+        0%, 100% {
+
+            box-shadow:
+
+                0 0 10px
+                rgba(255,255,255,0.08),
+
+                0 8px 30px
+                rgba(0,0,0,0.4);
+        }
+
+        50% {
+
+            box-shadow:
+
+                0 0 20px
+                rgba(255,255,255,0.18),
+
+                0 0 40px
+                rgba(255,255,255,0.08);
+        }
+
+    }
+
+    /* =========================
+       DESKRIPSI
+    ========================= */
 
     .description {
 
-        color:
-            #ccc;
+        color: #ccc;
 
-        font-size:
-            15px;
+        font-size: 15px;
 
-        margin-bottom:
-            30px;
+        margin-bottom: 25px;
 
         text-shadow:
 
@@ -353,33 +435,25 @@
             rgba(0,0,0,0.8);
     }
 
-
     /* =========================
        MUSIC PLAYER
     ========================= */
 
     .music-player {
 
-        width:
-            100%;
+        width: 100%;
 
-        padding:
-            14px 16px;
+        padding: 14px 16px;
 
-        display:
-            flex;
+        display: flex;
 
-        align-items:
-            center;
+        align-items: center;
 
-        gap:
-            14px;
+        gap: 14px;
 
-        position:
-            relative;
+        position: relative;
 
-        overflow:
-            hidden;
+        overflow: hidden;
 
         background:
             rgba(0,0,0,0.55);
@@ -388,8 +462,7 @@
             1px solid
             rgba(255,255,255,0.2);
 
-        border-radius:
-            18px;
+        border-radius: 18px;
 
         backdrop-filter:
             blur(15px);
@@ -405,15 +478,11 @@
             0 8px 30px
             rgba(0,0,0,0.5);
 
-        margin-bottom:
-            20px;
+        margin-bottom: 20px;
 
         transition:
             0.4s;
     }
-
-
-    /* MUSIK AKTIF */
 
     .music-player.playing {
 
@@ -429,28 +498,19 @@
             rgba(255,255,255,0.2);
     }
 
-
-    /* ICON MUSIK */
-
     .music-icon {
 
-        width:
-            48px;
+        width: 48px;
 
-        height:
-            48px;
+        height: 48px;
 
-        display:
-            flex;
+        display: flex;
 
-        align-items:
-            center;
+        align-items: center;
 
-        justify-content:
-            center;
+        justify-content: center;
 
-        border-radius:
-            50%;
+        border-radius: 50%;
 
         background:
 
@@ -460,11 +520,9 @@
                 #111
             );
 
-        font-size:
-            22px;
+        font-size: 22px;
 
-        flex-shrink:
-            0;
+        flex-shrink: 0;
 
         box-shadow:
 
@@ -472,47 +530,32 @@
             rgba(255,255,255,0.15);
     }
 
-
-    /* INFO MUSIK */
-
     .music-info {
 
-        flex:
-            1;
+        flex: 1;
 
-        text-align:
-            left;
+        text-align: left;
     }
-
 
     .music-info strong {
 
-        display:
-            block;
+        display: block;
 
-        font-size:
-            14px;
+        font-size: 14px;
 
-        color:
-            white;
+        color: white;
     }
-
 
     .music-info span {
 
-        display:
-            block;
+        display: block;
 
-        margin-top:
-            4px;
+        margin-top: 4px;
 
-        font-size:
-            11px;
+        font-size: 11px;
 
-        color:
-            #aaa;
+        color: #aaa;
     }
-
 
     /* =========================
        TOMBOL PLAY
@@ -520,38 +563,27 @@
 
     .play-button {
 
-        width:
-            45px;
+        width: 45px;
 
-        height:
-            45px;
+        height: 45px;
 
-        border:
-            none;
+        border: none;
 
-        border-radius:
-            50%;
+        border-radius: 50%;
 
-        background:
-            white;
+        background: white;
 
-        color:
-            black;
+        color: black;
 
-        font-size:
-            16px;
+        font-size: 16px;
 
-        cursor:
-            pointer;
+        cursor: pointer;
 
-        display:
-            flex;
+        display: flex;
 
-        align-items:
-            center;
+        align-items: center;
 
-        justify-content:
-            center;
+        justify-content: center;
 
         transition:
             0.3s;
@@ -561,7 +593,6 @@
             0 0 10px
             rgba(255,255,255,0.5);
     }
-
 
     .play-button:hover {
 
@@ -577,13 +608,35 @@
             rgba(255,255,255,0.5);
     }
 
-
     .play-button:active {
 
         transform:
             scale(0.94);
     }
 
+    .music-player.playing
+    .music-icon {
+
+        animation:
+            putar
+            2s
+            linear
+            infinite;
+    }
+
+    @keyframes putar {
+
+        from {
+            transform:
+                rotate(0deg);
+        }
+
+        to {
+            transform:
+                rotate(360deg);
+        }
+
+    }
 
     /* =========================
        SOCIAL BUTTON
@@ -591,29 +644,21 @@
 
     .button {
 
-        display:
-            block;
+        display: block;
 
-        width:
-            100%;
+        width: 100%;
 
-        padding:
-            16px;
+        padding: 16px;
 
-        margin:
-            15px 0;
+        margin: 15px 0;
 
-        color:
-            white;
+        color: white;
 
-        text-decoration:
-            none;
+        text-decoration: none;
 
-        position:
-            relative;
+        position: relative;
 
-        overflow:
-            hidden;
+        overflow: hidden;
 
         background:
             rgba(0,0,0,0.5);
@@ -622,8 +667,7 @@
             1px solid
             rgba(255,255,255,0.2);
 
-        border-radius:
-            15px;
+        border-radius: 15px;
 
         transition:
             all 0.3s ease;
@@ -640,28 +684,19 @@
             rgba(255,255,255,0.08);
     }
 
-
-    /* CAHAYA BERGERAK */
-
     .button::before {
 
-        content:
-            "";
+        content: "";
 
-        position:
-            absolute;
+        position: absolute;
 
-        top:
-            0;
+        top: 0;
 
-        left:
-            -120%;
+        left: -120%;
 
-        width:
-            100%;
+        width: 100%;
 
-        height:
-            100%;
+        height: 100%;
 
         background:
 
@@ -676,15 +711,10 @@
             0.6s;
     }
 
-
     .button:hover::before {
 
-        left:
-            120%;
+        left: 120%;
     }
-
-
-    /* BUTTON HOVER */
 
     .button:hover {
 
@@ -706,9 +736,6 @@
             rgba(255,255,255,0.2);
     }
 
-
-    /* BUTTON DITEKAN */
-
     .button:active {
 
         transform:
@@ -723,23 +750,18 @@
             rgba(255,255,255,0.7);
     }
 
-
     /* =========================
        FOOTER
     ========================= */
 
     footer {
 
-        margin-top:
-            30px;
+        margin-top: 30px;
 
-        font-size:
-            12px;
+        font-size: 12px;
 
-        color:
-            #aaa;
+        color: #aaa;
     }
-
 
     /* =========================
        RESPONSIVE HP
@@ -748,36 +770,36 @@
     @media (max-width: 480px) {
 
         .container {
-            max-width:
-                100%;
+            max-width: 100%;
         }
 
         h1 {
-            font-size:
-                24px;
+            font-size: 24px;
         }
 
         .profile {
-            width:
-                105px;
 
-            height:
-                105px;
+            width: 105px;
+
+            height: 105px;
+        }
+
+        #digital-clock {
+
+            font-size: 28px;
         }
 
     }
 
 </style>
-
+```
 
 </head>
 
 <body>
 
-
-<!-- =========================
-     VIDEO BACKGROUND
-========================= -->
+```
+<!-- VIDEO BACKGROUND -->
 
 <video
     autoplay
@@ -792,22 +814,15 @@
 
 </video>
 
-
 <!-- OVERLAY -->
 
-<div
-    class="video-overlay">
-</div>
+<div class="video-overlay"></div>
 
-
-<!-- =========================
-     KONTEN WEBSITE
-========================= -->
+<!-- KONTEN WEBSITE -->
 
 <div class="container">
 
-
-    <!-- PROFILE FOTO -->
+    <!-- PROFILE -->
 
     <div class="profile">
 
@@ -817,7 +832,6 @@
 
     </div>
 
-
     <!-- TYPING EFFECT -->
 
     <h1>
@@ -826,19 +840,33 @@
 
     </h1>
 
+    <!-- JAM DIGITAL -->
+
+    <div class="clock-box">
+
+        <div id="digital-clock">
+            00:00:00
+        </div>
+
+        <div id="day-name">
+            Hari
+        </div>
+
+        <div id="date-name">
+            Tanggal
+        </div>
+
+    </div>
 
     <!-- DESKRIPSI -->
 
     <p class="description">
 
-       
+        Ini adalah website pertama saya.
 
     </p>
 
-
-    <!-- =========================
-         MUSIK
-    ========================= -->
+    <!-- MUSIK -->
 
     <audio
         id="musik"
@@ -853,40 +881,25 @@
 
     </audio>
 
-
     <!-- MUSIC PLAYER -->
 
-    <div
-        class="music-player">
+    <div class="music-player">
 
-
-        <div
-            class="music-icon">
-
+        <div class="music-icon">
             🎵
-
         </div>
 
-
-        <div
-            class="music-info">
+        <div class="music-info">
 
             <strong>
-
                 Music Player
-
             </strong>
 
-
-            <span
-                id="musicStatus">
-
+            <span id="musicStatus">
                 Tekan ▶ untuk memutar
-
             </span>
 
         </div>
-
 
         <button
             class="play-button"
@@ -898,17 +911,13 @@
 
         </button>
 
-
     </div>
 
-
-    <!-- =========================
-         WHATSAPP
-    ========================= -->
+    <!-- WHATSAPP -->
 
     <a
         class="button"
-        href="https://wa.me/6283899902729?text=Hay+Fik+How+Are+You?+☺️"
+        href="https://wa.me/6283899902729"
         target="_blank"
         rel="noopener noreferrer">
 
@@ -916,10 +925,7 @@
 
     </a>
 
-
-    <!-- =========================
-         TIKTOK
-    ========================= -->
+    <!-- TIKTOK -->
 
     <a
         class="button"
@@ -931,10 +937,7 @@
 
     </a>
 
-
-    <!-- =========================
-         INSTAGRAM
-    ========================= -->
+    <!-- INSTAGRAM -->
 
     <a
         class="button"
@@ -946,25 +949,19 @@
 
     </a>
 
-
     <!-- FOOTER -->
 
     <footer>
 
-        © 2026 Website By Sanchez Fikey
+        © 2026 Sanchez Fikey
 
     </footer>
 
-
 </div>
 
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- JAVASCRIPT -->
 
 <script>
-
 
     /* =========================
        TYPING EFFECT
@@ -982,12 +979,10 @@
 
     ];
 
-
     const typingText =
         document.getElementById(
             "typing-text"
         );
-
 
     let indexTeks = 0;
 
@@ -995,16 +990,12 @@
 
     let sedangMengetik = true;
 
-
     function efekMengetik() {
-
 
         const teksSekarang =
             teks[indexTeks];
 
-
         if (sedangMengetik) {
-
 
             typingText.textContent =
                 teksSekarang.substring(
@@ -1012,9 +1003,7 @@
                     indexHuruf + 1
                 );
 
-
             indexHuruf++;
-
 
             if (
                 indexHuruf >=
@@ -1030,20 +1019,14 @@
                 );
 
                 return;
-
             }
-
 
             setTimeout(
                 efekMengetik,
                 90
             );
 
-        }
-
-
-        else {
-
+        } else {
 
             typingText.textContent =
                 teksSekarang.substring(
@@ -1051,9 +1034,7 @@
                     indexHuruf - 1
                 );
 
-
             indexHuruf--;
-
 
             if (
                 indexHuruf <= 0
@@ -1074,9 +1055,7 @@
                 );
 
                 return;
-
             }
-
 
             setTimeout(
                 efekMengetik,
@@ -1087,11 +1066,132 @@
 
     }
 
-
-    /* MULAI TYPING EFFECT */
-
     efekMengetik();
 
+
+    /* =========================
+       JAM DIGITAL
+    ========================= */
+
+    function updateClock() {
+
+        const sekarang =
+            new Date();
+
+        const jam =
+            String(
+                sekarang.getHours()
+            ).padStart(2, "0");
+
+        const menit =
+            String(
+                sekarang.getMinutes()
+            ).padStart(2, "0");
+
+        const detik =
+            String(
+                sekarang.getSeconds()
+            ).padStart(2, "0");
+
+        const hari = [
+
+            "Minggu",
+
+            "Senin",
+
+            "Selasa",
+
+            "Rabu",
+
+            "Kamis",
+
+            "Jumat",
+
+            "Sabtu"
+
+        ];
+
+        const bulan = [
+
+            "Januari",
+
+            "Februari",
+
+            "Maret",
+
+            "April",
+
+            "Mei",
+
+            "Juni",
+
+            "Juli",
+
+            "Agustus",
+
+            "September",
+
+            "Oktober",
+
+            "November",
+
+            "Desember"
+
+        ];
+
+        const namaHari =
+            hari[
+                sekarang.getDay()
+            ];
+
+        const tanggal =
+            sekarang.getDate();
+
+        const namaBulan =
+            bulan[
+                sekarang.getMonth()
+            ];
+
+        const tahun =
+            sekarang.getFullYear();
+
+        document
+            .getElementById(
+                "digital-clock"
+            )
+            .textContent =
+            jam +
+            ":" +
+            menit +
+            ":" +
+            detik;
+
+        document
+            .getElementById(
+                "day-name"
+            )
+            .textContent =
+            namaHari;
+
+        document
+            .getElementById(
+                "date-name"
+            )
+            .textContent =
+            tanggal +
+            " " +
+            namaBulan +
+            " " +
+            tahun;
+
+    }
+
+    updateClock();
+
+    setInterval(
+        updateClock,
+        1000
+    );
 
 
     /* =========================
@@ -1100,47 +1200,37 @@
 
     async function putarMusik() {
 
-
         const musik =
             document.getElementById(
                 "musik"
             );
-
 
         const tombol =
             document.getElementById(
                 "musicButton"
             );
 
-
         const status =
             document.getElementById(
                 "musicStatus"
             );
-
 
         const player =
             document.querySelector(
                 ".music-player"
             );
 
-
         if (musik.paused) {
-
 
             try {
 
-
                 await musik.play();
-
 
                 tombol.innerHTML =
                     "⏸";
 
-
                 status.innerHTML =
                     "Musik sedang diputar";
-
 
                 player.classList.add(
                     "playing"
@@ -1148,23 +1238,18 @@
 
             }
 
-
             catch (error) {
-
 
                 console.error(
                     "Musik gagal diputar:",
                     error
                 );
 
-
                 tombol.innerHTML =
                     "▶";
 
-
                 status.innerHTML =
                     "Musik gagal dimuat";
-
 
                 player.classList.remove(
                     "playing"
@@ -1172,22 +1257,15 @@
 
             }
 
-        }
-
-
-        else {
-
+        } else {
 
             musik.pause();
-
 
             tombol.innerHTML =
                 "▶";
 
-
             status.innerHTML =
                 "Musik sedang berhenti";
-
 
             player.classList.remove(
                 "playing"
@@ -1197,17 +1275,13 @@
 
     }
 
-
-    /* =========================
-       CEK FILE MUSIK
-    ========================= */
+    /* CEK FILE MUSIK */
 
     document
         .getElementById("musik")
         .addEventListener(
             "error",
             function() {
-
 
                 document
                     .getElementById(
@@ -1219,9 +1293,8 @@
             }
         );
 
-
 </script>
-
+```
 
 </body>
 </html>
