@@ -1,1732 +1,1802 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sanchez Fikey</title>
 
-    <title>Sanchez Fikey</title>
+<style>
 
-    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    /* =========================
+       VIDEO BACKGROUND
+    ========================= */
+
+    #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+    }
+
+    /* =========================
+       OVERLAY
+    ========================= */
+
+    .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            linear-gradient(
+                135deg,
+                rgba(0,0,0,0.78),
+                rgba(0,0,0,0.45),
+                rgba(0,0,0,0.78)
+            );
+        z-index: -1;
+    }
+
+    /* =========================
+       BODY
+    ========================= */
+
+    body {
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* =========================
+       CONTAINER
+    ========================= */
+
+    .container {
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        animation: muncul 1s ease;
+    }
+
+    @keyframes muncul {
+
+        from {
+            opacity: 0;
+            transform: translateY(25px);
         }
 
-        /* =========================
-           VIDEO BACKGROUND
-        ========================= */
-
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* =========================
-           OVERLAY
-        ========================= */
+    }
 
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,0,0,0.78),
-                    rgba(0,0,0,0.45),
-                    rgba(0,0,0,0.78)
-                );
-            z-index: -1;
-        }
+    /* =========================
+       PROFILE GLOW
+    ========================= */
 
-        /* =========================
-           BODY
-        ========================= */
+    .profile {
+        width: 115px;
+        height: 115px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        position: relative;
+        padding: 4px;
 
-        body {
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
+        background:
+            linear-gradient(
+                135deg,
+                #ffffff,
+                #777777,
+                #ffffff
+            );
 
-        /* =========================
-           CONTAINER
-        ========================= */
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.5),
+            0 0 25px rgba(255,255,255,0.35),
+            0 0 50px rgba(255,255,255,0.2);
 
-        .container {
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            animation: muncul 1s ease;
-        }
+        animation:
+            glowPP
+            2s
+            ease-in-out
+            infinite;
+    }
 
-        @keyframes muncul {
+    .profile img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid rgba(5,5,5,0.95);
+    }
 
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
+    .profile::before {
+        content: "";
+        position: absolute;
+        inset: -7px;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.35);
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        animation:
+            pulseGlow
+            2s
+            ease-in-out
+            infinite;
 
-        }
+        z-index: -1;
+    }
 
-        /* =========================
-           PROFILE GLOW
-        ========================= */
+    @keyframes glowPP {
 
-        .profile {
-            width: 115px;
-            height: 115px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            position: relative;
-            padding: 4px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff,
-                    #777777,
-                    #ffffff
-                );
+        0%, 100% {
 
             box-shadow:
-                0 0 10px rgba(255,255,255,0.5),
-                0 0 25px rgba(255,255,255,0.35),
-                0 0 50px rgba(255,255,255,0.2);
-
-            animation:
-                glowPP
-                2s
-                ease-in-out
-                infinite;
-        }
-
-        .profile img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid rgba(5,5,5,0.95);
-        }
-
-        .profile::before {
-            content: "";
-            position: absolute;
-            inset: -7px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.35);
-
-            animation:
-                pulseGlow
-                2s
-                ease-in-out
-                infinite;
-
-            z-index: -1;
-        }
-
-        @keyframes glowPP {
-
-            0%, 100% {
-
-                box-shadow:
-                    0 0 10px rgba(255,255,255,0.4),
-                    0 0 25px rgba(255,255,255,0.25),
-                    0 0 45px rgba(255,255,255,0.15);
-
-            }
-
-            50% {
-
-                box-shadow:
-                    0 0 20px rgba(255,255,255,0.8),
-                    0 0 45px rgba(255,255,255,0.5),
-                    0 0 80px rgba(255,255,255,0.3);
-
-            }
+                0 0 10px rgba(255,255,255,0.4),
+                0 0 25px rgba(255,255,255,0.25),
+                0 0 45px rgba(255,255,255,0.15);
 
         }
 
-        @keyframes pulseGlow {
+        50% {
 
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(0.98);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
+            box-shadow:
+                0 0 20px rgba(255,255,255,0.8),
+                0 0 45px rgba(255,255,255,0.5),
+                0 0 80px rgba(255,255,255,0.3);
 
         }
 
-        /* =========================
-           TYPING EFFECT
-        ========================= */
+    }
 
-        h1 {
-            font-size: 28px;
-            min-height: 40px;
-            margin-bottom: 15px;
+    @keyframes pulseGlow {
 
-            text-shadow:
-                0 2px 10px rgba(0,0,0,0.8);
+        0%, 100% {
+            opacity: 0.3;
+            transform: scale(0.98);
         }
 
-        #typing-text::after {
-            content: "|";
-            margin-left: 3px;
-
-            animation:
-                kedip
-                0.7s
-                infinite;
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
         }
 
-        @keyframes kedip {
+    }
 
-            0%, 50% {
-                opacity: 1;
-            }
+    /* =========================
+       TYPING EFFECT
+    ========================= */
 
-            51%, 100% {
-                opacity: 0;
-            }
+    h1 {
+        font-size: 28px;
+        min-height: 40px;
+        margin-bottom: 15px;
 
+        text-shadow:
+            0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    #typing-text::after {
+        content: "|";
+        margin-left: 3px;
+
+        animation:
+            kedip
+            0.7s
+            infinite;
+    }
+
+    @keyframes kedip {
+
+        0%, 50% {
+            opacity: 1;
         }
 
-        /* =========================
-           JAM DIGITAL
-        ========================= */
+        51%, 100% {
+            opacity: 0;
+        }
 
-        .clock-box {
-            width: 100%;
-            margin: 5px auto 22px;
-            padding: 14px 20px;
+    }
 
-            background:
-                rgba(0,0,0,0.45);
+    /* =========================
+       JAM DIGITAL
+    ========================= */
 
-            border:
-                1px solid
-                rgba(255,255,255,0.18);
+    .clock-box {
+        width: 100%;
+        margin: 5px auto 22px;
+        padding: 14px 20px;
 
-            border-radius: 18px;
+        background:
+            rgba(0,0,0,0.45);
 
-            backdrop-filter:
-                blur(15px);
+        border:
+            1px solid
+            rgba(255,255,255,0.18);
 
-            -webkit-backdrop-filter:
-                blur(15px);
+        border-radius: 18px;
+
+        backdrop-filter:
+            blur(15px);
+
+        -webkit-backdrop-filter:
+            blur(15px);
+
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.08),
+            0 8px 30px rgba(0,0,0,0.4);
+
+        animation:
+            clockGlow
+            2s
+            ease-in-out
+            infinite;
+    }
+
+    #digital-clock {
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 3px;
+
+        text-shadow:
+            0 0 5px rgba(255,255,255,0.8),
+            0 0 15px rgba(255,255,255,0.5),
+            0 0 30px rgba(255,255,255,0.25);
+    }
+
+    #day-name {
+        margin-top: 6px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #date-name {
+        margin-top: 4px;
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    @keyframes clockGlow {
+
+        0%, 100% {
 
             box-shadow:
                 0 0 10px rgba(255,255,255,0.08),
                 0 8px 30px rgba(0,0,0,0.4);
 
-            animation:
-                clockGlow
-                2s
-                ease-in-out
-                infinite;
         }
 
-        #digital-clock {
-            font-size: 32px;
-            font-weight: bold;
-            letter-spacing: 3px;
-
-            text-shadow:
-                0 0 5px rgba(255,255,255,0.8),
-                0 0 15px rgba(255,255,255,0.5),
-                0 0 30px rgba(255,255,255,0.25);
-        }
-
-        #day-name {
-            margin-top: 6px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        #date-name {
-            margin-top: 4px;
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        @keyframes clockGlow {
-
-            0%, 100% {
-
-                box-shadow:
-                    0 0 10px rgba(255,255,255,0.08),
-                    0 8px 30px rgba(0,0,0,0.4);
-
-            }
-
-            50% {
-
-                box-shadow:
-                    0 0 20px rgba(255,255,255,0.18),
-                    0 0 40px rgba(255,255,255,0.08);
-
-            }
-
-        }
-
-        /* =========================
-           MUSIC PLAYER
-        ========================= */
-
-        .music-player {
-            width: 100%;
-            padding: 16px;
-            position: relative;
-            overflow: hidden;
-
-            background:
-                rgba(0,0,0,0.55);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
-
-            border-radius: 20px;
-
-            backdrop-filter:
-                blur(15px);
-
-            -webkit-backdrop-filter:
-                blur(15px);
+        50% {
 
             box-shadow:
-                0 0 10px rgba(255,255,255,0.08),
-                0 8px 30px rgba(0,0,0,0.5);
-
-            margin-bottom: 20px;
-
-            transition:
-                0.4s;
-        }
-
-        /* =========================
-           MUSIC AKTIF
-        ========================= */
-
-        .music-player.playing {
-
-            border-color:
-                rgba(255,255,255,0.8);
-
-            animation:
-                musicBoxGlow
-                2s
-                ease-in-out
-                infinite;
-        }
-
-        @keyframes musicBoxGlow {
-
-            0%, 100% {
-
-                box-shadow:
-                    0 0 10px rgba(255,255,255,0.1),
-                    0 0 25px rgba(255,255,255,0.05);
-
-            }
-
-            50% {
-
-                box-shadow:
-                    0 0 20px rgba(255,255,255,0.4),
-                    0 0 45px rgba(255,255,255,0.15);
-
-            }
+                0 0 20px rgba(255,255,255,0.18),
+                0 0 40px rgba(255,255,255,0.08);
 
         }
 
-        /* =========================
-           BAGIAN ATAS MUSIC PLAYER
-        ========================= */
+    }
 
-        .music-top {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+    /* =========================
+       MUSIC PLAYER
+    ========================= */
 
-        /* =========================
-           BULATAN MUSIK
-        ========================= */
+    .music-player {
+        width: 100%;
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
 
-        .music-visual {
+        background:
+            rgba(0,0,0,0.55);
 
-            width: 58px;
-            height: 58px;
+        border:
+            1px solid
+            rgba(255,255,255,0.2);
 
-            flex-shrink: 0;
+        border-radius: 20px;
 
-            position: relative;
+        backdrop-filter:
+            blur(15px);
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        -webkit-backdrop-filter:
+            blur(15px);
 
-            border-radius: 50%;
+        box-shadow:
+            0 0 10px rgba(255,255,255,0.08),
+            0 8px 30px rgba(0,0,0,0.5);
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #444,
-                    #111
-                );
+        margin-bottom: 20px;
 
-            border:
-                2px solid
-                rgba(255,255,255,0.25);
+        transition:
+            0.4s;
+    }
+
+    /* =========================
+       MUSIC AKTIF
+    ========================= */
+
+    .music-player.playing {
+
+        border-color:
+            rgba(255,255,255,0.8);
+
+        animation:
+            musicBoxGlow
+            2s
+            ease-in-out
+            infinite;
+    }
+
+    @keyframes musicBoxGlow {
+
+        0%, 100% {
 
             box-shadow:
-                0 0 15px
-                rgba(255,255,255,0.2);
+                0 0 10px rgba(255,255,255,0.1),
+                0 0 25px rgba(255,255,255,0.05);
 
         }
 
-        /* IKON MUSIK */
+        50% {
 
-        .music-icon {
-
-            font-size: 23px;
-
-            position: relative;
-
-            z-index: 2;
-
-            transition:
-                0.3s;
-        }
-
-        /* IKON BERPUTAR */
-
-        .music-player.playing
-        .music-icon {
-
-            animation:
-                putarMusik
-                2s
-                linear
-                infinite;
-        }
-
-        @keyframes putarMusik {
-
-            from {
-                transform:
-                    rotate(0deg);
-            }
-
-            to {
-                transform:
-                    rotate(360deg);
-            }
+            box-shadow:
+                0 0 20px rgba(255,255,255,0.4),
+                0 0 45px rgba(255,255,255,0.15);
 
         }
 
-        /* =========================
-           GELOMBANG DI BULATAN
-        ========================= */
+    }
 
-        .wave {
+    /* =========================
+       BAGIAN ATAS MUSIC PLAYER
+    ========================= */
 
-            position: absolute;
+    .music-top {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
 
-            width: 58px;
-            height: 58px;
+    /* =========================
+       BULATAN MUSIK
+    ========================= */
 
-            border-radius: 50%;
+    .music-visual {
 
-            border:
-                2px solid
-                rgba(255,255,255,0.4);
+        width: 58px;
+        height: 58px;
 
-            opacity: 0;
+        flex-shrink: 0;
+
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background:
+            linear-gradient(
+                135deg,
+                #444,
+                #111
+            );
+
+        border:
+            2px solid
+            rgba(255,255,255,0.25);
+
+        box-shadow:
+            0 0 15px
+            rgba(255,255,255,0.2);
+
+    }
+
+    /* IKON MUSIK */
+
+    .music-icon {
+
+        font-size: 23px;
+
+        position: relative;
+
+        z-index: 2;
+
+        transition:
+            0.3s;
+    }
+
+    /* IKON BERPUTAR */
+
+    .music-player.playing
+    .music-icon {
+
+        animation:
+            putarMusik
+            2s
+            linear
+            infinite;
+    }
+
+    @keyframes putarMusik {
+
+        from {
+            transform:
+                rotate(0deg);
+        }
+
+        to {
+            transform:
+                rotate(360deg);
+        }
+
+    }
+
+    /* =========================
+       GELOMBANG DI BULATAN
+    ========================= */
+
+    .wave {
+
+        position: absolute;
+
+        width: 58px;
+        height: 58px;
+
+        border-radius: 50%;
+
+        border:
+            2px solid
+            rgba(255,255,255,0.4);
+
+        opacity: 0;
+
+        transform:
+            scale(0.8);
+
+    }
+
+    .music-player.playing
+    .wave {
+
+        animation:
+            wavePulse
+            1.8s
+            ease-out
+            infinite;
+    }
+
+    .music-player.playing
+    .wave:nth-child(2) {
+
+        animation-delay:
+            0.6s;
+    }
+
+    .music-player.playing
+    .wave:nth-child(3) {
+
+        animation-delay:
+            1.2s;
+    }
+
+    @keyframes wavePulse {
+
+        0% {
+
+            opacity: 0.8;
 
             transform:
                 scale(0.8);
 
         }
 
-        .music-player.playing
-        .wave {
+        100% {
 
-            animation:
-                wavePulse
-                1.8s
-                ease-out
-                infinite;
-        }
-
-        .music-player.playing
-        .wave:nth-child(2) {
-
-            animation-delay:
-                0.6s;
-        }
-
-        .music-player.playing
-        .wave:nth-child(3) {
-
-            animation-delay:
-                1.2s;
-        }
-
-        @keyframes wavePulse {
-
-            0% {
-
-                opacity: 0.8;
-
-                transform:
-                    scale(0.8);
-
-            }
-
-            100% {
-
-                opacity: 0;
-
-                transform:
-                    scale(1.7);
-
-            }
-
-        }
-
-        /* =========================
-           INFO MUSIK
-        ========================= */
-
-        .music-info {
-
-            flex: 1;
-
-            min-width: 0;
-
-            text-align: left;
-        }
-
-        .music-info strong {
-
-            display: block;
-
-            font-size: 14px;
-
-            color:
-                white;
-
-            margin-bottom:
-                5px;
-        }
-
-        .music-info span {
-
-            display: block;
-
-            font-size: 11px;
-
-            color:
-                #aaa;
-        }
-
-        /* =========================
-           TOMBOL PLAY MODERN
-        ========================= */
-
-        .play-button {
-
-            width: 46px;
-            height: 46px;
-
-            flex-shrink: 0;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background:
-                white;
-
-            color:
-                black;
-
-            font-size:
-                17px;
-
-            cursor:
-                pointer;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            transition:
-                0.3s;
-
-            box-shadow:
-                0 0 10px
-                rgba(255,255,255,0.5);
-        }
-
-        .play-button:hover {
+            opacity: 0;
 
             transform:
-                scale(1.1);
+                scale(1.7);
 
-            box-shadow:
-
-                0 0 15px
-                rgba(255,255,255,0.9),
-
-                0 0 30px
-                rgba(255,255,255,0.5);
         }
 
-        .play-button:active {
+    }
 
-            transform:
-                scale(0.92);
+    /* =========================
+       INFO MUSIK
+    ========================= */
+
+    .music-info {
+
+        flex: 1;
+
+        min-width: 0;
+
+        text-align: left;
+    }
+
+    .music-info strong {
+
+        display: block;
+
+        font-size: 14px;
+
+        color:
+            white;
+
+        margin-bottom:
+            5px;
+    }
+
+    .music-info span {
+
+        display: block;
+
+        font-size: 11px;
+
+        color:
+            #aaa;
+    }
+
+    /* =========================
+       TOMBOL PLAY MODERN
+    ========================= */
+
+    .play-button {
+
+        width: 46px;
+        height: 46px;
+
+        flex-shrink: 0;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background:
+            white;
+
+        color:
+            black;
+
+        font-size:
+            17px;
+
+        cursor:
+            pointer;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        transition:
+            0.3s;
+
+        box-shadow:
+            0 0 10px
+            rgba(255,255,255,0.5);
+    }
+
+    .play-button:hover {
+
+        transform:
+            scale(1.1);
+
+        box-shadow:
+
+            0 0 15px
+            rgba(255,255,255,0.9),
+
+            0 0 30px
+            rgba(255,255,255,0.5);
+    }
+
+    .play-button:active {
+
+        transform:
+            scale(0.92);
+    }
+
+    /* =========================
+       PROGRESS BAR
+    ========================= */
+
+    .progress-container {
+
+        width: 100%;
+
+        height: 5px;
+
+        margin-top: 15px;
+
+        background:
+            rgba(255,255,255,0.15);
+
+        border-radius:
+            10px;
+
+        cursor:
+            pointer;
+
+        overflow:
+            hidden;
+    }
+
+    .progress-bar {
+
+        width: 0%;
+
+        height: 100%;
+
+        background:
+            linear-gradient(
+                90deg,
+                #ffffff,
+                #888888
+            );
+
+        border-radius:
+            10px;
+
+        transition:
+            width 0.1s linear;
+    }
+
+    /* =========================
+       WAKTU LAGU
+    ========================= */
+
+    .music-time {
+
+        display:
+            flex;
+
+        justify-content:
+            space-between;
+
+        margin-top:
+            6px;
+
+        font-size:
+            10px;
+
+        color:
+            #999;
+    }
+
+    /* =========================
+       SOCIAL BUTTON
+    ========================= */
+
+    .button {
+
+        display:
+            block;
+
+        width:
+            100%;
+
+        padding:
+            16px;
+
+        margin:
+            15px 0;
+
+        color:
+            white;
+
+        text-decoration:
+            none;
+
+        position:
+            relative;
+
+        overflow:
+            hidden;
+
+        background:
+            rgba(0,0,0,0.5);
+
+        border:
+            1px solid
+            rgba(255,255,255,0.2);
+
+        border-radius:
+            15px;
+
+        transition:
+            all 0.3s ease;
+
+        backdrop-filter:
+            blur(12px);
+
+        -webkit-backdrop-filter:
+            blur(12px);
+
+        box-shadow:
+            0 0 10px
+            rgba(255,255,255,0.08);
+    }
+
+    .button::before {
+
+        content:
+            "";
+
+        position:
+            absolute;
+
+        top:
+            0;
+
+        left:
+            -120%;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.35),
+                transparent
+            );
+
+        transition:
+            0.6s;
+    }
+
+    .button:hover::before {
+
+        left:
+            120%;
+    }
+
+    .button:hover {
+
+        transform:
+            translateY(-4px);
+
+        background:
+            rgba(255,255,255,0.15);
+
+        border-color:
+            rgba(255,255,255,0.7);
+
+        box-shadow:
+
+            0 0 10px
+            rgba(255,255,255,0.4),
+
+            0 0 30px
+            rgba(255,255,255,0.2);
+    }
+
+    .button:active {
+
+        transform:
+            scale(0.96);
+
+        background:
+            rgba(255,255,255,0.2);
+
+        box-shadow:
+            0 0 20px
+            rgba(255,255,255,0.7);
+    }
+
+    /* =========================
+       WHATSAPP CHANNEL KHUSUS
+    ========================= */
+
+    .channel-button {
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        gap:
+            10px;
+
+        font-weight:
+            bold;
+
+        background:
+            rgba(0,0,0,0.58);
+
+        border:
+            1px solid
+            rgba(255,255,255,0.25);
+
+        box-shadow:
+            0 0 10px
+            rgba(255,255,255,0.1);
+    }
+
+    .channel-icon {
+        font-size:
+            21px;
+
+        filter:
+            drop-shadow(
+                0 0 6px
+                rgba(255,255,255,0.6)
+            );
+    }
+
+    .channel-button:hover {
+        box-shadow:
+            0 0 15px
+            rgba(255,255,255,0.5),
+
+            0 0 35px
+            rgba(255,255,255,0.2);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+        margin-top:
+            30px;
+
+        font-size:
+            12px;
+
+        color:
+            #aaa;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        .container {
+
+            max-width:
+                100%;
+
         }
 
-        /* =========================
-           PROGRESS BAR
-        ========================= */
-
-        .progress-container {
-
-            width: 100%;
-
-            height: 5px;
-
-            margin-top: 15px;
-
-            background:
-                rgba(255,255,255,0.15);
-
-            border-radius:
-                10px;
-
-            cursor:
-                pointer;
-
-            overflow:
-                hidden;
-        }
-
-        .progress-bar {
-
-            width: 0%;
-
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #888888
-                );
-
-            border-radius:
-                10px;
-
-            transition:
-                width 0.1s linear;
-        }
-
-        /* =========================
-           WAKTU LAGU
-        ========================= */
-
-        .music-time {
-
-            display:
-                flex;
-
-            justify-content:
-                space-between;
-
-            margin-top:
-                6px;
+        h1 {
 
             font-size:
-                10px;
+                24px;
 
-            color:
-                #999;
         }
 
-        /* =========================
-           SOCIAL BUTTON
-        ========================= */
-
-        .button {
-
-            display:
-                block;
+        .profile {
 
             width:
-                100%;
-
-            padding:
-                16px;
-
-            margin:
-                15px 0;
-
-            color:
-                white;
-
-            text-decoration:
-                none;
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            background:
-                rgba(0,0,0,0.5);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
-
-            border-radius:
-                15px;
-
-            transition:
-                all 0.3s ease;
-
-            backdrop-filter:
-                blur(12px);
-
-            -webkit-backdrop-filter:
-                blur(12px);
-
-            box-shadow:
-                0 0 10px
-                rgba(255,255,255,0.08);
-        }
-
-        .button::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            top:
-                0;
-
-            left:
-                -120%;
-
-            width:
-                100%;
+                105px;
 
             height:
-                100%;
+                105px;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,0.35),
-                    transparent
-                );
-
-            transition:
-                0.6s;
         }
 
-        .button:hover::before {
-
-            left:
-                120%;
-        }
-
-        .button:hover {
-
-            transform:
-                translateY(-4px);
-
-            background:
-                rgba(255,255,255,0.15);
-
-            border-color:
-                rgba(255,255,255,0.7);
-
-            box-shadow:
-
-                0 0 10px
-                rgba(255,255,255,0.4),
-
-                0 0 30px
-                rgba(255,255,255,0.2);
-        }
-
-        .button:active {
-
-            transform:
-                scale(0.96);
-
-            background:
-                rgba(255,255,255,0.2);
-
-            box-shadow:
-                0 0 20px
-                rgba(255,255,255,0.7);
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-
-            margin-top:
-                30px;
+        #digital-clock {
 
             font-size:
-                12px;
-
-            color:
-                #aaa;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 480px) {
-
-            .container {
-
-                max-width:
-                    100%;
-
-            }
-
-            h1 {
-
-                font-size:
-                    24px;
-
-            }
-
-            .profile {
-
-                width:
-                    105px;
-
-                height:
-                    105px;
-
-            }
-
-            #digital-clock {
-
-                font-size:
-                    28px;
-
-            }
+                28px;
 
         }
 
-    </style>
-</head>
+    }
 
-<body>
+</style>
 
-    <!-- VIDEO BACKGROUND -->
+</head><body><!-- VIDEO BACKGROUND -->
 
-    <video
-        autoplay
-        muted
+<video
+    autoplay
+    muted
+    loop
+    playsinline
+    id="background-video">
+
+    <source
+        src="background.mp4"
+        type="video/mp4">
+
+</video>
+
+
+<!-- OVERLAY -->
+
+<div class="video-overlay"></div>
+
+
+<!-- KONTEN -->
+
+<div class="container">
+
+
+    <!-- PROFILE -->
+
+    <div class="profile">
+
+        <img
+            src="profil.jpg"
+            alt="Foto Profil">
+
+    </div>
+
+
+    <!-- TYPING EFFECT -->
+
+    <h1>
+
+        <span
+            id="typing-text">
+        </span>
+
+    </h1>
+
+
+    <!-- JAM -->
+
+    <div class="clock-box">
+
+        <div id="digital-clock">
+            00:00:00
+        </div>
+
+        <div id="day-name">
+            Hari
+        </div>
+
+        <div id="date-name">
+            Tanggal
+        </div>
+
+    </div>
+
+
+    <!-- AUDIO -->
+
+    <audio
+        id="musik"
         loop
-        playsinline
-        id="background-video">
+        preload="metadata">
 
         <source
-            src="background.mp4"
-            type="video/mp4">
+            src="AUD-20260617-WA0043.mp3"
+            type="audio/mpeg">
 
-    </video>
+        Browser kamu tidak mendukung pemutar audio.
 
-
-    <!-- OVERLAY -->
-
-    <div class="video-overlay"></div>
+    </audio>
 
 
-    <!-- KONTEN -->
+    <!-- MUSIC PLAYER -->
 
-    <div class="container">
-
-
-        <!-- PROFILE -->
-
-        <div class="profile">
-
-            <img
-                src="profil.jpg"
-                alt="Foto Profil">
-
-        </div>
+    <div
+        class="music-player"
+        id="musicPlayer">
 
 
-        <!-- TYPING EFFECT -->
-
-        <h1>
-
-            <span
-                id="typing-text">
-            </span>
-
-        </h1>
-
-
-        <!-- JAM -->
-
-        <div class="clock-box">
-
-            <div id="digital-clock">
-                00:00:00
-            </div>
-
-            <div id="day-name">
-                Hari
-            </div>
-
-            <div id="date-name">
-                Tanggal
-            </div>
-
-        </div>
-
-
-        <!-- AUDIO -->
-
-        <audio
-            id="musik"
-            loop
-            preload="metadata">
-
-            <source
-                src="AUD-20260617-WA0043.mp3"
-                type="audio/mpeg">
-
-            Browser kamu tidak mendukung pemutar audio.
-
-        </audio>
-
-
-        <!-- MUSIC PLAYER -->
+        <!-- BAGIAN ATAS -->
 
         <div
-            class="music-player"
-            id="musicPlayer">
+            class="music-top">
 
 
-            <!-- BAGIAN ATAS -->
+            <!-- BULATAN + GELOMBANG -->
 
             <div
-                class="music-top">
+                class="music-visual">
 
-
-                <!-- BULATAN + GELOMBANG -->
 
                 <div
-                    class="music-visual">
-
-
-                    <div
-                        class="wave">
-                    </div>
-
-
-                    <div
-                        class="wave">
-                    </div>
-
-
-                    <div
-                        class="wave">
-                    </div>
-
-
-                    <div
-                        class="music-icon">
-
-                        🎵
-
-                    </div>
-
-
+                    class="wave">
                 </div>
 
 
-                <!-- INFO -->
-
                 <div
-                    class="music-info">
-
-
-                    <strong>
-
-                        Music Player
-
-                    </strong>
-
-
-                    <span
-                        id="musicStatus">
-
-                        Tekan ▶ untuk memutar
-
-                    </span>
-
-
+                    class="wave">
                 </div>
 
 
-                <!-- PLAY BUTTON -->
-
-                <button
-                    class="play-button"
-                    id="musicButton"
-                    type="button"
-                    onclick="putarMusik()">
-
-                    ▶
-
-                </button>
-
-
-            </div>
-
-
-            <!-- PROGRESS -->
-
-            <div
-                class="progress-container"
-                id="progressContainer">
+                <div
+                    class="wave">
+                </div>
 
 
                 <div
-                    class="progress-bar"
-                    id="progressBar">
+                    class="music-icon">
+
+                    🎵
+
                 </div>
 
 
             </div>
 
 
-            <!-- WAKTU -->
+            <!-- INFO -->
 
             <div
-                class="music-time">
+                class="music-info">
+
+
+                <strong>
+
+                    Music Player
+
+                </strong>
 
 
                 <span
-                    id="currentTime">
+                    id="musicStatus">
 
-                    00:00
+                    Tekan ▶ untuk memutar
 
                 </span>
 
 
-                <span
-                    id="duration">
-
-                    00:00
-
-                </span>
+            </div>
 
 
+            <!-- PLAY BUTTON -->
+
+            <button
+                class="play-button"
+                id="musicButton"
+                type="button"
+                onclick="putarMusik()">
+
+                ▶
+
+            </button>
+
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div
+            class="progress-container"
+            id="progressContainer">
+
+
+            <div
+                class="progress-bar"
+                id="progressBar">
             </div>
 
 
         </div>
 
 
-        <!-- WHATSAPP -->
+        <!-- WAKTU -->
 
-        <a
-            class="button"
-            href="https://wa.me/6283899902729"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            💬 WhatsApp
-
-        </a>
+        <div
+            class="music-time">
 
 
-        <!-- TIKTOK -->
+            <span
+                id="currentTime">
 
-        <a
-            class="button"
-            href="https://www.tiktok.com/@anyaacimoy"
-            target="_blank"
-            rel="noopener noreferrer">
+                00:00
 
-            🎵 TikTok
-
-        </a>
+            </span>
 
 
-        <!-- INSTAGRAM -->
+            <span
+                id="duration">
 
-        <a
-            class="button"
-            href="https://www.instagram.com/sanchezfemz"
-            target="_blank"
-            rel="noopener noreferrer">
+                00:00
 
-            📸 Instagram
-
-        </a>
+            </span>
 
 
-        <!-- FOOTER -->
-
-        <footer>
-
-            © 2026 Sanchez Fikey
-
-        </footer>
+        </div>
 
 
     </div>
 
 
-    <script>
+    <!-- WHATSAPP -->
 
-        /* =========================
-           TYPING EFFECT
-        ========================= */
+    <a
+        class="button"
+        href="https://wa.me/6283899902729"
+        target="_blank"
+        rel="noopener noreferrer">
 
-        const teks = [
+        💬 WhatsApp
 
-            "Selamat Datang 👋",
+    </a>
 
-            "Di Website Ku 💝",
 
-            "Kenalin Aku Sanchez Fikey 🥳",
+    <!-- WHATSAPP CHANNEL -->
 
-            "Terima Kasih Sudah Mampir Yah 🤗"
+    <a
+        class="button channel-button"
+        href="https://whatsapp.com/channel/0029VbB4Xql2phHKzSkCKv1A"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <span
+            class="channel-icon">
+
+            📢
+
+        </span>
+
+        <span>
+
+            WhatsApp Channel
+
+        </span>
+
+    </a>
+
+
+    <!-- TIKTOK -->
+
+    <a
+        class="button"
+        href="https://www.tiktok.com/@anyaacimoy"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        🎵 TikTok
+
+    </a>
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+        class="button"
+        href="https://www.instagram.com/sanchezfemz"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        📸 Instagram
+
+    </a>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Sanchez Fikey
+
+    </footer>
+
+
+</div>
+
+
+<script>
+
+    /* =========================
+       TYPING EFFECT
+    ========================= */
+
+    const teks = [
+
+        "Selamat Datang 👋",
+
+        "Di Website Ku 💝",
+
+        "Kenalin Aku Sanchez Fikey 🥳",
+
+        "Terima Kasih Sudah Mampir Yah 🤗"
+
+    ];
+
+
+    const typingText =
+        document.getElementById(
+            "typing-text"
+        );
+
+
+    let indexTeks =
+        0;
+
+
+    let indexHuruf =
+        0;
+
+
+    let sedangMengetik =
+        true;
+
+
+    function efekMengetik() {
+
+
+        const teksSekarang =
+            teks[indexTeks];
+
+
+        if (sedangMengetik) {
+
+
+            typingText.textContent =
+                teksSekarang.substring(
+                    0,
+                    indexHuruf + 1
+                );
+
+
+            indexHuruf++;
+
+
+            if (
+                indexHuruf >=
+                teksSekarang.length
+            ) {
+
+
+                sedangMengetik =
+                    false;
+
+
+                setTimeout(
+                    efekMengetik,
+                    2000
+                );
+
+
+                return;
+
+            }
+
+
+            setTimeout(
+                efekMengetik,
+                90
+            );
+
+
+        } else {
+
+
+            typingText.textContent =
+                teksSekarang.substring(
+                    0,
+                    indexHuruf - 1
+                );
+
+
+            indexHuruf--;
+
+
+            if (
+                indexHuruf <=
+                0
+            ) {
+
+
+                sedangMengetik =
+                    true;
+
+
+                indexTeks =
+                    (
+                        indexTeks + 1
+                    ) %
+                    teks.length;
+
+
+                setTimeout(
+                    efekMengetik,
+                    500
+                );
+
+
+                return;
+
+            }
+
+
+            setTimeout(
+                efekMengetik,
+                50
+            );
+
+        }
+
+    }
+
+
+    efekMengetik();
+
+
+    /* =========================
+       JAM DIGITAL
+    ========================= */
+
+    function updateClock() {
+
+
+        const sekarang =
+            new Date();
+
+
+        const jam =
+            String(
+                sekarang.getHours()
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const menit =
+            String(
+                sekarang.getMinutes()
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const detik =
+            String(
+                sekarang.getSeconds()
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const hari = [
+
+            "Minggu",
+
+            "Senin",
+
+            "Selasa",
+
+            "Rabu",
+
+            "Kamis",
+
+            "Jumat",
+
+            "Sabtu"
 
         ];
 
 
-        const typingText =
-            document.getElementById(
-                "typing-text"
-            );
+        const bulan = [
 
+            "Januari",
 
-        let indexTeks =
-            0;
+            "Februari",
 
+            "Maret",
 
-        let indexHuruf =
-            0;
+            "April",
 
+            "Mei",
 
-        let sedangMengetik =
-            true;
+            "Juni",
 
+            "Juli",
 
-        function efekMengetik() {
+            "Agustus",
 
+            "September",
 
-            const teksSekarang =
-                teks[indexTeks];
+            "Oktober",
 
+            "November",
 
-            if (sedangMengetik) {
+            "Desember"
 
+        ];
 
-                typingText.textContent =
-                    teksSekarang.substring(
-                        0,
-                        indexHuruf + 1
-                    );
 
+        document
+            .getElementById(
+                "digital-clock"
+            )
+            .textContent =
 
-                indexHuruf++;
+            jam +
+            ":" +
+            menit +
+            ":" +
+            detik;
 
 
-                if (
-                    indexHuruf >=
-                    teksSekarang.length
-                ) {
+        document
+            .getElementById(
+                "day-name"
+            )
+            .textContent =
 
-
-                    sedangMengetik =
-                        false;
-
-
-                    setTimeout(
-                        efekMengetik,
-                        2000
-                    );
-
-
-                    return;
-
-                }
-
-
-                setTimeout(
-                    efekMengetik,
-                    90
-                );
-
-
-            } else {
-
-
-                typingText.textContent =
-                    teksSekarang.substring(
-                        0,
-                        indexHuruf - 1
-                    );
-
-
-                indexHuruf--;
-
-
-                if (
-                    indexHuruf <=
-                    0
-                ) {
-
-
-                    sedangMengetik =
-                        true;
-
-
-                    indexTeks =
-                        (
-                            indexTeks + 1
-                        ) %
-                        teks.length;
-
-
-                    setTimeout(
-                        efekMengetik,
-                        500
-                    );
-
-
-                    return;
-
-                }
-
-
-                setTimeout(
-                    efekMengetik,
-                    50
-                );
-
-            }
-
-        }
-
-
-        efekMengetik();
-
-
-        /* =========================
-           JAM DIGITAL
-        ========================= */
-
-        function updateClock() {
-
-
-            const sekarang =
-                new Date();
-
-
-            const jam =
-                String(
-                    sekarang.getHours()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            const menit =
-                String(
-                    sekarang.getMinutes()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            const detik =
-                String(
-                    sekarang.getSeconds()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            const hari = [
-
-                "Minggu",
-
-                "Senin",
-
-                "Selasa",
-
-                "Rabu",
-
-                "Kamis",
-
-                "Jumat",
-
-                "Sabtu"
-
+            hari[
+                sekarang.getDay()
             ];
 
 
-            const bulan = [
+        document
+            .getElementById(
+                "date-name"
+            )
+            .textContent =
 
-                "Januari",
+            sekarang.getDate() +
+            " " +
+            bulan[
+                sekarang.getMonth()
+            ] +
+            " " +
+            sekarang.getFullYear();
 
-                "Februari",
-
-                "Maret",
-
-                "April",
-
-                "Mei",
-
-                "Juni",
-
-                "Juli",
-
-                "Agustus",
-
-                "September",
-
-                "Oktober",
-
-                "November",
-
-                "Desember"
-
-            ];
+    }
 
 
-            document
-                .getElementById(
-                    "digital-clock"
-                )
-                .textContent =
-
-                jam +
-                ":" +
-                menit +
-                ":" +
-                detik;
+    updateClock();
 
 
-            document
-                .getElementById(
-                    "day-name"
-                )
-                .textContent =
-
-                hari[
-                    sekarang.getDay()
-                ];
+    setInterval(
+        updateClock,
+        1000
+    );
 
 
-            document
-                .getElementById(
-                    "date-name"
-                )
-                .textContent =
+    /* =========================
+       MUSIC PLAYER
+    ========================= */
 
-                sekarang.getDate() +
-                " " +
-                bulan[
-                    sekarang.getMonth()
-                ] +
-                " " +
-                sekarang.getFullYear();
-
-        }
-
-
-        updateClock();
-
-
-        setInterval(
-            updateClock,
-            1000
+    const musik =
+        document.getElementById(
+            "musik"
         );
 
 
-        /* =========================
-           MUSIC PLAYER
-        ========================= */
+    const tombol =
+        document.getElementById(
+            "musicButton"
+        );
 
-        const musik =
-            document.getElementById(
-                "musik"
+
+    const status =
+        document.getElementById(
+            "musicStatus"
+        );
+
+
+    const player =
+        document.getElementById(
+            "musicPlayer"
+        );
+
+
+    const progressBar =
+        document.getElementById(
+            "progressBar"
+        );
+
+
+    const progressContainer =
+        document.getElementById(
+            "progressContainer"
+        );
+
+
+    const currentTime =
+        document.getElementById(
+            "currentTime"
+        );
+
+
+    const duration =
+        document.getElementById(
+            "duration"
+        );
+
+
+    /* FORMAT WAKTU */
+
+    function formatTime(
+        waktu
+    ) {
+
+
+        if (
+            isNaN(waktu)
+        ) {
+
+            return "00:00";
+
+        }
+
+
+        const menit =
+            Math.floor(
+                waktu / 60
             );
 
 
-        const tombol =
-            document.getElementById(
-                "musicButton"
+        const detik =
+            Math.floor(
+                waktu % 60
             );
 
 
-        const status =
-            document.getElementById(
-                "musicStatus"
-            );
+        return (
+
+            String(
+                menit
+            ).padStart(
+                2,
+                "0"
+            )
+
+            +
+
+            ":"
+
+            +
+
+            String(
+                detik
+            ).padStart(
+                2,
+                "0"
+            )
+
+        );
+
+    }
 
 
-        const player =
-            document.getElementById(
-                "musicPlayer"
-            );
+    /* PLAY / PAUSE */
+
+    async function putarMusik() {
 
 
-        const progressBar =
-            document.getElementById(
-                "progressBar"
-            );
-
-
-        const progressContainer =
-            document.getElementById(
-                "progressContainer"
-            );
-
-
-        const currentTime =
-            document.getElementById(
-                "currentTime"
-            );
-
-
-        const duration =
-            document.getElementById(
-                "duration"
-            );
-
-
-        /* FORMAT WAKTU */
-
-        function formatTime(
-            waktu
+        if (
+            musik.paused
         ) {
 
 
-            if (
-                isNaN(waktu)
+            try {
+
+
+                await musik.play();
+
+
+                tombol.innerHTML =
+                    "⏸";
+
+
+                status.innerHTML =
+                    "Musik sedang diputar";
+
+
+                player.classList.add(
+                    "playing"
+                );
+
+
+            } catch (
+                error
             ) {
 
-                return "00:00";
+
+                console.error(
+                    error
+                );
+
+
+                status.innerHTML =
+                    "Musik gagal diputar";
+
 
             }
 
 
-            const menit =
-                Math.floor(
-                    waktu / 60
-                );
+        } else {
 
 
-            const detik =
-                Math.floor(
-                    waktu % 60
-                );
+            musik.pause();
 
 
-            return (
+            tombol.innerHTML =
+                "▶";
 
-                String(
-                    menit
-                ).padStart(
-                    2,
-                    "0"
-                )
 
-                +
+            status.innerHTML =
+                "Musik sedang berhenti";
 
-                ":"
 
-                +
-
-                String(
-                    detik
-                ).padStart(
-                    2,
-                    "0"
-                )
-
+            player.classList.remove(
+                "playing"
             );
 
         }
 
+    }
 
-        /* PLAY / PAUSE */
 
-        async function putarMusik() {
+    /* UPDATE PROGRESS */
+
+    musik.addEventListener(
+        "timeupdate",
+        function() {
 
 
             if (
-                musik.paused
+                musik.duration
             ) {
 
 
-                try {
-
-
-                    await musik.play();
-
-
-                    tombol.innerHTML =
-                        "⏸";
-
-
-                    status.innerHTML =
-                        "Musik sedang diputar";
-
-
-                    player.classList.add(
-                        "playing"
-                    );
-
-
-                } catch (
-                    error
-                ) {
-
-
-                    console.error(
-                        error
-                    );
-
-
-                    status.innerHTML =
-                        "Musik gagal diputar";
-
-
-                }
-
-
-            } else {
-
-
-                musik.pause();
-
-
-                tombol.innerHTML =
-                    "▶";
-
-
-                status.innerHTML =
-                    "Musik sedang berhenti";
-
-
-                player.classList.remove(
-                    "playing"
-                );
-
-            }
-
-        }
-
-
-        /* UPDATE PROGRESS */
-
-        musik.addEventListener(
-            "timeupdate",
-            function() {
-
-
-                if (
-                    musik.duration
-                ) {
-
-
-                    const persen =
-
-                        (
-                            musik.currentTime /
-                            musik.duration
-                        )
-
-                        *
-
-                        100;
-
-
-                    progressBar.style.width =
-                        persen +
-                        "%";
-
-
-                    currentTime.textContent =
-
-                        formatTime(
-                            musik.currentTime
-                        );
-
-                }
-
-            }
-        );
-
-
-        /* DURASI LAGU */
-
-        musik.addEventListener(
-            "loadedmetadata",
-            function() {
-
-
-                duration.textContent =
-
-                    formatTime(
-                        musik.duration
-                    );
-
-            }
-        );
-
-
-        /* KLIK PROGRESS BAR */
-
-        progressContainer.addEventListener(
-            "click",
-            function(
-                event
-            ) {
-
-
-                if (
-                    !musik.duration
-                ) {
-
-                    return;
-
-                }
-
-
-                const lebar =
-                    progressContainer.clientWidth;
-
-
-                const posisi =
-                    event.offsetX;
-
-
-                musik.currentTime =
+                const persen =
 
                     (
-                        posisi /
-                        lebar
+                        musik.currentTime /
+                        musik.duration
                     )
 
                     *
 
-                    musik.duration;
+                    100;
+
+
+                progressBar.style.width =
+                    persen +
+                    "%";
+
+
+                currentTime.textContent =
+
+                    formatTime(
+                        musik.currentTime
+                    );
 
             }
-        );
+
+        }
+    );
 
 
-        /* SAAT LAGU SELESAI */
+    /* DURASI LAGU */
 
-        musik.addEventListener(
-            "ended",
-            function() {
-
-
-                tombol.innerHTML =
-                    "▶";
+    musik.addEventListener(
+        "loadedmetadata",
+        function() {
 
 
-                status.innerHTML =
-                    "Musik selesai";
+            duration.textContent =
 
-
-                player.classList.remove(
-                    "playing"
+                formatTime(
+                    musik.duration
                 );
 
+        }
+    );
+
+
+    /* KLIK PROGRESS BAR */
+
+    progressContainer.addEventListener(
+        "click",
+        function(
+            event
+        ) {
+
+
+            if (
+                !musik.duration
+            ) {
+
+                return;
 
             }
-        );
 
 
-        /* CEK FILE MUSIK */
-
-        musik.addEventListener(
-            "error",
-            function() {
+            const lebar =
+                progressContainer.clientWidth;
 
 
-                status.innerHTML =
-                    "File musik tidak ditemukan";
+            const posisi =
+                event.offsetX;
 
 
-            }
-        );
+            musik.currentTime =
 
-    </script>
+                (
+                    posisi /
+                    lebar
+                )
+
+                *
+
+                musik.duration;
+
+        }
+    );
+
+
+    /* SAAT LAGU SELESAI */
+
+    musik.addEventListener(
+        "ended",
+        function() {
+
+
+            tombol.innerHTML =
+                "▶";
+
+
+            status.innerHTML =
+                "Musik selesai";
+
+
+            player.classList.remove(
+                "playing"
+            );
+
+
+        }
+    );
+
+
+    /* CEK FILE MUSIK */
+
+    musik.addEventListener(
+        "error",
+        function() {
+
+
+            status.innerHTML =
+                "File musik tidak ditemukan";
+
+
+        }
+    );
+
+</script>
 
 </body>
 </html>
